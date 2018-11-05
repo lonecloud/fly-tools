@@ -1,5 +1,6 @@
 package cn.lonecloud.tool.web.http;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.http.NameValuePair;
@@ -63,6 +64,7 @@ public class HttpClientUtil {
             if (response.getStatusLine().getStatusCode() == 200) {
                 resultString = EntityUtils.toString(response.getEntity(), "UTF-8");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -79,6 +81,18 @@ public class HttpClientUtil {
             logger.debug(resultString);
         }
         return resultString;
+    }
+
+    /**
+     * get请求返回json->Object
+     * @param url
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T doGetJson(String url, Class<T> clazz){
+        String s = doGet(url);
+        return JSON.parseObject(s, clazz);
     }
 
     /**
