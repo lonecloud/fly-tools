@@ -14,6 +14,8 @@
         <module>tool-object</module>
         <module>tool-logging</module>
         <module>tool-web</module>
+        <module>tool-io</module>
+        <module>tool-exception</module>
     </modules>
     <properties>
         <spring.version>4.3.18.RELEASE</spring.version>
